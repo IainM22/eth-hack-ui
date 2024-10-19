@@ -1,11 +1,9 @@
 import { useState } from "react";
 import { useDynamicContext } from "@dynamic-labs/sdk-react-core";
 import { Button } from "~/components/ui/button";
-import { parseEther } from "viem";
-
 import { getPimlicoSmartAccountClient } from "./utils/safe";
 import { APP_CHAIN } from "./utils/constants";
-
+import { rebalance } from "./utils/rebalance";
 const TransferETH = () => {
   const [loading, setLoading] = useState(false);
   const [txHash, setTxHash] = useState("");
@@ -33,14 +31,12 @@ const TransferETH = () => {
         primaryWallet,
       );
 
-      // Replace with the actual recipient address
-      const recipientAddress = "0x994A42f111645C33FF24926450cCAb4cFC9a4770";
-      const amountInEth = "0.001"; // Transfer 0.01 ETH
-
-      const hash = await smartAccountClient.sendTransaction({
-        to: recipientAddress,
-        value: parseEther(amountInEth),
-      });
+      const hash = await rebalance(
+        smartAccountClient,
+        "0xF65A28BFF84BDcD85e74b2d47a35dd2BfC17F0BB",
+        1000000000000000000n,
+        "0x994A42f111645C33FF24926450cCAb4cFC9a4770",
+      );
 
       setTxHash(hash);
     } catch (err) {
@@ -57,14 +53,14 @@ const TransferETH = () => {
     return (
       <div>
         <Button onClick={handleTransferETH} disabled={loading}>
-          {loading ? "Transferring..." : "Transfer 0.01 ETH"}
+          {loading ? "Executing..." : "Perform action"}
         </Button>
       </div>
     );
   } else if (user && txHash) {
     return (
       <div>
-        <h1>ETH Transfer Successful</h1>
+        <h1>Action successful</h1>
         <p>Transaction Hash: {txHash}</p>
       </div>
     );

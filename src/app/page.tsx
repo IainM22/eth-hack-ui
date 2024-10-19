@@ -3,6 +3,7 @@ import {
   DynamicWidget,
 } from "@dynamic-labs/sdk-react-core";
 import { EthereumWalletConnectors } from "@dynamic-labs/ethereum";
+import { SimpleTx } from "./SimpleTx";
 
 export default function HomePage() {
   return (
@@ -18,7 +19,8 @@ export default function HomePage() {
               walletConnectors: [EthereumWalletConnectors],
             }}
           >
-            <DynamicWidget />
+            <DynamicWidget variant="dropdown" />
+            <SimpleTx />
           </DynamicContextProvider>
         </div>
       </div>

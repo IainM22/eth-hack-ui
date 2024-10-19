@@ -4,6 +4,8 @@ import { DynamicWidget } from "@dynamic-labs/sdk-react-core";
 import { useAccount } from "wagmi";
 import { SimpleTx } from "./SimpleTx";
 import DeploySafe from "./DeploySafe";
+import DepositFunds from "./DepositFunds";
+
 export default function HomePage() {
   const { address } = useAccount();
   return (
@@ -17,6 +19,7 @@ export default function HomePage() {
           {/* <SimpleTx /> */}
           {/* <p suppressHydrationWarning>{address}</p> */}
           <DeploySafe />
+          <DepositFunds />
         </div>
       </div>
     </main>

@@ -10,6 +10,8 @@
     "start": "next start"
   },
   "dependencies": {
+    "@dynamic-labs/ethereum": "^3.4.2",
+    "@dynamic-labs/sdk-react-core": "^3.4.2",
     "@radix-ui/react-slot": "^1.1.0",
     "@t3-oss/env-nextjs": "^0.10.1",
     "class-variance-authority": "^0.7.0",
@@ -21,6 +23,7 @@
     "react-dom": "^18.3.1",
     "tailwind-merge": "^2.5.4",
     "tailwindcss-animate": "^1.0.7",
+    "viem": "^2.21.29",
     "zod": "^3.23.3"
   },
   "devDependencies": {

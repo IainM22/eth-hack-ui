@@ -1,16 +1,15 @@
 import { useState } from "react";
 import { useDynamicContext } from "@dynamic-labs/sdk-react-core";
-import { getOrMapViemChain } from "@dynamic-labs/ethereum-core";
-import { sepolia } from "viem/chains";
 import { Button } from "~/components/ui/button";
-import { getPimlicoSmartAccountClient2 } from "./utils/safe";
+import { getPimlicoSmartAccountClient } from "./utils/safe";
+import { APP_CHAIN } from "./utils/constants";
 
 const DeploySafe = () => {
   const [loading, setLoading] = useState(false);
   const [safeAddress, setSafeAddress] = useState("");
   const [safeDeployed, setSafeDeployed] = useState(false);
 
-  const { user, primaryWallet, network } = useDynamicContext();
+  const { user, primaryWallet } = useDynamicContext();
 
   const handleDeploySafe = async () => {
     setLoading(true);
@@ -28,8 +27,8 @@ const DeploySafe = () => {
         return;
       }
 
-      const { account } = await getPimlicoSmartAccountClient2(
-        sepolia,
+      const { account } = await getPimlicoSmartAccountClient(
+        APP_CHAIN,
         primaryWallet,
       );
       setSafeAddress(account.address);

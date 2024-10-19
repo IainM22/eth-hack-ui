@@ -1,8 +1,4 @@
-import {
-  DynamicContextProvider,
-  DynamicWidget,
-} from "@dynamic-labs/sdk-react-core";
-import { EthereumWalletConnectors } from "@dynamic-labs/ethereum";
+import { DynamicWidget } from "@dynamic-labs/sdk-react-core";
 import { SimpleTx } from "./SimpleTx";
 
 export default function HomePage() {
@@ -13,15 +9,8 @@ export default function HomePage() {
           Undegen
         </h1>
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:gap-8">
-          <DynamicContextProvider
-            settings={{
-              environmentId: "42e04834-7850-4513-a3d7-954d93983644",
-              walletConnectors: [EthereumWalletConnectors],
-            }}
-          >
-            <DynamicWidget variant="dropdown" />
-            <SimpleTx />
-          </DynamicContextProvider>
+          <DynamicWidget variant="dropdown" />
+          <SimpleTx />
         </div>
       </div>
     </main>

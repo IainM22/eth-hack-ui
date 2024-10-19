@@ -2,6 +2,8 @@ import "~/styles/globals.css";
 
 import { GeistSans } from "geist/font/sans";
 import { type Metadata } from "next";
+import { DynamicContextProvider } from "@dynamic-labs/sdk-react-core";
+import { EthereumWalletConnectors } from "@dynamic-labs/ethereum";
 
 export const metadata: Metadata = {
   title: "Create T3 App",
@@ -14,7 +16,16 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en" className={`${GeistSans.variable}`}>
-      <body>{children}</body>
+      <body>
+        <DynamicContextProvider
+          settings={{
+            environmentId: "42e04834-7850-4513-a3d7-954d93983644",
+            walletConnectors: [EthereumWalletConnectors],
+          }}
+        >
+          {children}
+        </DynamicContextProvider>
+      </body>
     </html>
   );
 }

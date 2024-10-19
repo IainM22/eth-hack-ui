@@ -3,7 +3,7 @@
 import { DynamicWidget } from "@dynamic-labs/sdk-react-core";
 import { useAccount } from "wagmi";
 import { SimpleTx } from "./SimpleTx";
-
+import DeploySafe from "./DeploySafe";
 export default function HomePage() {
   const { address } = useAccount();
   return (
@@ -14,8 +14,9 @@ export default function HomePage() {
         </h1>
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:gap-8">
           <DynamicWidget variant="dropdown" />
-          <SimpleTx />
-          <p>{address}</p>
+          {/* <SimpleTx /> */}
+          {/* <p suppressHydrationWarning>{address}</p> */}
+          <DeploySafe />
         </div>
       </div>
     </main>

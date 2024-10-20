@@ -55,9 +55,9 @@ export function RiskProfileSurvey() {
           name="investmentChoice"
           render={({ field }) => (
             <FormItem className="space-y-3">
-              <FormLabel>
-                1. If you had to invest $20,000, which of the following
-                investment choices would you find most appealing?
+              <FormLabel className="text-[30px] font-bold">
+                If you had to invest $20,000, which of the following investment
+                choices would you find most appealing?
               </FormLabel>
               <FormControl>
                 <RadioGroup
@@ -104,8 +104,8 @@ export function RiskProfileSurvey() {
           name="returnPreference"
           render={({ field }) => (
             <FormItem className="space-y-3">
-              <FormLabel>
-                2. Given the best and worst case returns of the four investment
+              <FormLabel className="text-[30px] font-bold">
+                Given the best and worst case returns of the four investment
                 choices below, which would you prefer?
               </FormLabel>
               <FormControl>
@@ -158,8 +158,8 @@ export function RiskProfileSurvey() {
           name="riskTakerDescription"
           render={({ field }) => (
             <FormItem className="space-y-3">
-              <FormLabel>
-                3. In general, how would your best friend describe you as a risk
+              <FormLabel className="text-[30px] font-bold">
+                In general, how would your best friend describe you as a risk
                 taker?
               </FormLabel>
               <FormControl>
@@ -210,7 +210,9 @@ export function RiskProfileSurvey() {
           name="age"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>4. What is your current age?</FormLabel>
+              <FormLabel className="text-[30px] font-bold">
+                What is your current age?
+              </FormLabel>
               <FormControl>
                 <Input
                   type="number"
@@ -228,7 +230,9 @@ export function RiskProfileSurvey() {
           name="annualIncome"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>5. What is your annual income?</FormLabel>
+              <FormLabel className="text-[30px] font-bold">
+                What is your annual income?
+              </FormLabel>
               <FormControl>
                 <Input
                   type="number"
@@ -246,7 +250,9 @@ export function RiskProfileSurvey() {
           name="retirementAge"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>6. What age would you like to retire?</FormLabel>
+              <FormLabel className="text-[30px] font-bold">
+                What age would you like to retire?
+              </FormLabel>
               <FormControl>
                 <Input
                   type="number"
@@ -264,7 +270,9 @@ export function RiskProfileSurvey() {
           name="netWorth"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>7. What is your current net worth?</FormLabel>
+              <FormLabel className="text-[30px] font-bold">
+                What is your current net worth?
+              </FormLabel>
               <FormControl>
                 <Input
                   type="number"
@@ -282,8 +290,8 @@ export function RiskProfileSurvey() {
           name="investmentOptions"
           render={() => (
             <FormItem>
-              <FormLabel>
-                8. What investment options do you have access to?
+              <FormLabel className="text-[30px] font-bold">
+                What investment options do you have access to?
               </FormLabel>
               <FormDescription>Select all that apply.</FormDescription>
               <div className="space-y-2">

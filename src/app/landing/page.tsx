@@ -6,7 +6,10 @@ import { Card } from "~/components/ui/card";
 
 export default function LandingPage() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center">
+    <main
+      className="flex min-h-screen flex-col items-center justify-center bg-cover bg-fixed bg-center"
+      style={{ backgroundImage: "url('/images/landing.png')" }}
+    >
       <div className="container flex flex-col items-center justify-center gap-12 px-4 py-16">
         <h1 className="mb-8 mt-12 text-center text-4xl font-bold">
           Responsibly grow your investments

@@ -2,6 +2,7 @@ import { APP_CHAIN } from "./constants";
 
 export const LOCAL_STORAGE_KEYS = {
   SMART_ACCOUNT_ADDRESS: "smartAccountAddress",
+  RISK_SCORE: "riskScore",
 };
 
 export function addToLocalStorage(key: string, value: any): void {

@@ -16,8 +16,9 @@ import {
 import { Input } from "~/components/ui/input";
 import { RadioGroup, RadioGroupItem } from "~/components/ui/radio-group";
 import { Checkbox } from "~/components/ui/checkbox";
+import { addToLocalStorage, LOCAL_STORAGE_KEYS } from "../utils/storage";
 
-const formSchema = z.object({
+export const formSchema = z.object({
   investmentChoice: z.enum(["a", "b", "c"]),
   returnPreference: z.enum(["a", "b", "c", "d"]),
   riskTakerDescription: z.enum(["a", "b", "c", "d"]),
@@ -43,8 +44,15 @@ export function RiskProfileSurvey() {
     },
   });
 
+  const calculateRiskScore = (answers: z.infer<typeof formSchema>) => {
+    // TODO: implement
+    console.log(answers);
+    return 2;
+  };
+
   function onSubmit(values: z.infer<typeof formSchema>) {
-    console.log(values);
+    const riskScore = calculateRiskScore(values);
+    addToLocalStorage(LOCAL_STORAGE_KEYS.RISK_SCORE, riskScore);
   }
 
   return (

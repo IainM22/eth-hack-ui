@@ -15,6 +15,7 @@ import {
 } from "~/components/ui/form";
 import { Input } from "~/components/ui/input";
 import { RadioGroup, RadioGroupItem } from "~/components/ui/radio-group";
+import { Checkbox } from "~/components/ui/checkbox";
 
 const formSchema = z.object({
   investmentChoice: z.enum(["a", "b", "c"]),
@@ -24,6 +25,7 @@ const formSchema = z.object({
   annualIncome: z.number().min(0),
   retirementAge: z.number().min(18).max(120),
   netWorth: z.number().min(0),
+  investmentOptions: z.array(z.enum(["stocks", "governmentBonds"])),
 });
 
 export function RiskProfileSurvey() {
@@ -37,6 +39,7 @@ export function RiskProfileSurvey() {
       annualIncome: undefined,
       retirementAge: undefined,
       netWorth: undefined,
+      investmentOptions: [],
     },
   });
 
@@ -269,6 +272,73 @@ export function RiskProfileSurvey() {
                   onChange={(e) => field.onChange(+e.target.value)}
                 />
               </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+
+        <FormField
+          control={form.control}
+          name="investmentOptions"
+          render={() => (
+            <FormItem>
+              <FormLabel>
+                8. What investment options do you have access to?
+              </FormLabel>
+              <FormDescription>Select all that apply.</FormDescription>
+              <div className="space-y-2">
+                <FormField
+                  control={form.control}
+                  name="investmentOptions"
+                  render={({ field }) => (
+                    <FormItem className="flex flex-row items-start space-x-3 space-y-0">
+                      <FormControl>
+                        <Checkbox
+                          checked={field.value?.includes("stocks")}
+                          onCheckedChange={(checked) => {
+                            return checked
+                              ? field.onChange([...field.value, "stocks"])
+                              : field.onChange(
+                                  field.value?.filter(
+                                    (value) => value !== "stocks",
+                                  ),
+                                );
+                          }}
+                        />
+                      </FormControl>
+                      <FormLabel className="font-normal">Stocks</FormLabel>
+                    </FormItem>
+                  )}
+                />
+                <FormField
+                  control={form.control}
+                  name="investmentOptions"
+                  render={({ field }) => (
+                    <FormItem className="flex flex-row items-start space-x-3 space-y-0">
+                      <FormControl>
+                        <Checkbox
+                          checked={field.value?.includes("governmentBonds")}
+                          onCheckedChange={(checked) => {
+                            return checked
+                              ? field.onChange([
+                                  ...field.value,
+                                  "governmentBonds",
+                                ])
+                              : field.onChange(
+                                  field.value?.filter(
+                                    (value) => value !== "governmentBonds",
+                                  ),
+                                );
+                          }}
+                        />
+                      </FormControl>
+                      <FormLabel className="font-normal">
+                        Government Bonds
+                      </FormLabel>
+                    </FormItem>
+                  )}
+                />
+              </div>
               <FormMessage />
             </FormItem>
           )}

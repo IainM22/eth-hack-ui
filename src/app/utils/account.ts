@@ -11,11 +11,12 @@ export const initializeAccount = async (wallet: Wallet) => {
     );
     addToLocalStorage(
       LOCAL_STORAGE_KEYS.SMART_ACCOUNT_ADDRESS,
-      smartAccountClient.account,
+      smartAccountClient.account.address,
     );
 
     await enableModule(smartAccountClient, UNDEGEN_MODULE_ADDRESS);
   } catch (e: any) {
     console.error("Failed to initialize account");
+    console.error(e);
   }
 };

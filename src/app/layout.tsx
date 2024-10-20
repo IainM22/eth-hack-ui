@@ -3,7 +3,10 @@
 import "~/styles/globals.css";
 
 import { GeistSans } from "geist/font/sans";
-import { DynamicContextProvider } from "@dynamic-labs/sdk-react-core";
+import {
+  DynamicContextProvider,
+  useDynamicEvents,
+} from "@dynamic-labs/sdk-react-core";
 import { EthereumWalletConnectors } from "@dynamic-labs/ethereum";
 import { DynamicWagmiConnector } from "@dynamic-labs/wagmi-connector";
 import { createConfig, WagmiProvider } from "wagmi";
@@ -11,6 +14,8 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { http } from "viem";
 import { mainnet } from "viem/chains";
 import { useRouter } from "next/navigation";
+
+import { initializeAccount } from "./utils/account";
 
 const config = createConfig({
   chains: [mainnet],
@@ -26,6 +31,13 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   const router = useRouter();
+
+  // Enable Safe module on wallet add
+  // useDynamicEvents("walletAdded", async (newWallet) => {
+  //   console.log("new wallet added", newWallet);
+  //   await initializeAccount(newWallet);
+  // });
+
   return (
     <html lang="en" className={`${GeistSans.variable}`}>
       <body>

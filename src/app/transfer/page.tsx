@@ -2,7 +2,7 @@
 
 import { useRouter } from "next/navigation";
 
-export default function InvestPage() {
+export default function TransferPage() {
   const router = useRouter();
 
   return (

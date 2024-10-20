@@ -10,6 +10,7 @@ import { createConfig, WagmiProvider } from "wagmi";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { http } from "viem";
 import { mainnet } from "viem/chains";
+import { useRouter } from "next/navigation";
 
 const config = createConfig({
   chains: [mainnet],
@@ -24,6 +25,7 @@ const queryClient = new QueryClient();
 export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
+  const router = useRouter();
   return (
     <html lang="en" className={`${GeistSans.variable}`}>
       <body>
@@ -34,6 +36,11 @@ export default function RootLayout({
             events: {
               onAuthSuccess: (args) => {
                 console.log("onAuthSuccess was called", args);
+                if (args.isAuthenticated) {
+                  router.push("/invest");
+                } else {
+                  router.push("/error");
+                }
               },
             },
           }}

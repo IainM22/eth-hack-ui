@@ -31,9 +31,11 @@ export default function DebugPage() {
         APP_CHAIN,
         primaryWallet,
       );
+      // TODO: use Merton share formula and an optimization
+      // to calculate the optimal allocation
       await rebalance(smartAccountClient, [
-        parseEther("0.01"),
-        parseEther("0.01"),
+        parseEther("0"),
+        parseEther("0"),
       ]);
     } catch (e) {
       console.error(e);

@@ -69,7 +69,7 @@ export const enableModule = async (
   moduleAddress: string,
 ) => {
   return await smartAccountClient.writeContract({
-    address: moduleAddress,
+    address: smartAccountClient.account.address,
     abi,
     functionName: "enableModule",
     args: [moduleAddress],

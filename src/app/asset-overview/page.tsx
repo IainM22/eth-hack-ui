@@ -7,7 +7,7 @@ export default function RebalancePendingPage() {
 
   return (
     <main
-      className="flex min-h-screen flex-col items-center justify-center"
+      className="flex min-h-[985px] flex-col items-center justify-center"
       style={{ backgroundImage: "url('/images/funded_dashboard.png')" }}
     />
   );

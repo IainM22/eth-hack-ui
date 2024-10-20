@@ -300,7 +300,7 @@ export function RiskProfileSurvey() {
                   What is your current age?
                 </FormLabel>
                 <FormControl>
-                  <Input
+                  <Input className="bg-white"
                     type="number"
                     {...field}
                     onChange={(e) => field.onChange(+e.target.value)}
@@ -320,7 +320,7 @@ export function RiskProfileSurvey() {
                   What is your annual income?
                 </FormLabel>
                 <FormControl>
-                  <Input
+                  <Input className="bg-white"
                     type="number"
                     {...field}
                     onChange={(e) => field.onChange(+e.target.value)}
@@ -340,7 +340,7 @@ export function RiskProfileSurvey() {
                   What age would you like to retire?
                 </FormLabel>
                 <FormControl>
-                  <Input
+                  <Input className="bg-white"
                     type="number"
                     {...field}
                     onChange={(e) => field.onChange(+e.target.value)}
@@ -360,7 +360,7 @@ export function RiskProfileSurvey() {
                   What is your current net worth?
                 </FormLabel>
                 <FormControl>
-                  <Input
+                  <Input className="bg-white"
                     type="number"
                     {...field}
                     onChange={(e) => field.onChange(+e.target.value)}

@@ -3,7 +3,7 @@
 import { useRouter } from "next/navigation";
 import { useDynamicContext, useIsLoggedIn } from "@dynamic-labs/sdk-react-core";
 
-export default function SignupPage() {
+export default function InvestPage() {
   const router = useRouter();
   const { setShowAuthFlow } = useDynamicContext();
   const isLoggedIn = useIsLoggedIn();

@@ -31,6 +31,11 @@ export default function RootLayout({
           settings={{
             environmentId: "42e04834-7850-4513-a3d7-954d93983644",
             walletConnectors: [EthereumWalletConnectors],
+            events: {
+              onAuthSuccess: (args) => {
+                console.log("onAuthSuccess was called", args);
+              },
+            },
           }}
         >
           <WagmiProvider config={config}>

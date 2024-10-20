@@ -6,7 +6,7 @@ import { RiskProfileSurvey } from "./RiskProfileSurvey";
 export default function SurveyPage() {
   return (
     <div className="relative min-h-screen w-full overflow-hidden">
-      <div 
+      <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
         style={{ backgroundImage: "url('/images/bg.png')" }}
       />

@@ -2,7 +2,6 @@
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-import { useRouter } from "next/navigation";
 import * as z from "zod";
 import { Button } from "~/components/ui/button";
 import {
@@ -18,8 +17,9 @@ import { Input } from "~/components/ui/input";
 import { RadioGroup, RadioGroupItem } from "~/components/ui/radio-group";
 import { Checkbox } from "~/components/ui/checkbox";
 import { addToLocalStorage, LOCAL_STORAGE_KEYS } from "../utils/storage";
+import { useRouter } from "next/navigation";
 
-export const formSchema = z.object({
+const formSchema = z.object({
   investmentChoice: z.enum(["a", "b", "c"]),
   returnPreference: z.enum(["a", "b", "c", "d"]),
   riskTakerDescription: z.enum(["a", "b", "c", "d"]),
@@ -32,7 +32,6 @@ export const formSchema = z.object({
 
 export function RiskProfileSurvey() {
   const router = useRouter();
-
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -61,6 +60,13 @@ export function RiskProfileSurvey() {
 
   return (
     <div className="mx-auto max-w-4xl px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16">
+      <h1 className="mb-12 mt-8 px-4 text-center text-3xl md:text-4xl lg:text-5xl">
+        <b>
+          <i>Risk Quiz:</i>
+        </b>
+        <br />
+        Help us understand your investment mindset
+      </h1>
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
           <FormField
@@ -365,7 +371,9 @@ export function RiskProfileSurvey() {
             )}
           />
 
-          <Button type="submit">Submit</Button>
+          <div className="flex justify-center">
+            <Button type="submit">Submit</Button>
+          </div>
         </form>
       </Form>
     </div>

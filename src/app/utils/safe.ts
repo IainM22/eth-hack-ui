@@ -11,6 +11,7 @@ import {
 } from "permissionless/clients/pimlico";
 import { signerToSafeSmartAccount } from "permissionless/accounts";
 import { type Wallet } from "@dynamic-labs/wallet-connector-core";
+import abi from "../abis/gnosis";
 
 const transportUrl = (chain: Chain) =>
   `https://api.pimlico.io/v2/${chain.id}/rpc?apikey=${process.env.NEXT_PUBLIC_PIMLICO_API_KEY}`;
@@ -60,5 +61,17 @@ export const getPimlicoSmartAccountClient = async (
         (await pimlicoBundlerClient(chain).getUserOperationGasPrice()).fast, // use pimlico bundler to get gas prices
       sponsorUserOperation: paymasterClient(chain).sponsorUserOperation, // optional
     },
+  });
+};
+
+export const enableModule = async (
+  smartAccountClient: ReturnType<typeof getPimlicoSmartAccountClient>,
+  moduleAddress: string,
+) => {
+  return await smartAccountClient.writeContract({
+    address: moduleAddress,
+    abi,
+    functionName: "enableModule",
+    args: [moduleAddress],
   });
 };

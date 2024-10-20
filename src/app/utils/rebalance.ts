@@ -1,5 +1,5 @@
 import { type getPimlicoSmartAccountClient } from "./safe";
-import abi from "./abi";
+import abi from "../abis/undegenModule";
 
 export const rebalance = async (
   smartAccountClient: ReturnType<typeof getPimlicoSmartAccountClient>,
